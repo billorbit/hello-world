@@ -59,3 +59,10 @@ jobs:
           echo "Pushing image to ECR..."
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           # echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+      - name: Terraform apply
+        run: |
+          curl -X POST https://api.github.com/repos/acodeb/billorbit-infra-service/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.GH_ACCESS_TOKEN }} \
+          --data '{"ref": "main", "inputs": { "tag": "'"$IMAGE_TAG"'" }}'
