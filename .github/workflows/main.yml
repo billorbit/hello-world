@@ -66,4 +66,4 @@ jobs:
           -H "Accept: application/vnd.github.v3+json" \
           -H "Content-Type: application/json" \
           -H "Authorization: Bearer ${{ secrets.GH_ACCESS_TOKEN }}" \
-          --data "{"ref": "main", "inputs": { "tag": "$IMAGE_TAG" }}"
+          --data "{"ref": "main", "inputs": { "tag": ${{ github.sha }} }}"
