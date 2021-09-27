@@ -62,7 +62,7 @@ jobs:
 
       - name: Terraform apply
         run: |
-          curl -X POST https://api.github.com/repos/acodeb/billorbit-infra-service/actions/workflows/apply.yml/dispatches \
+          curl -X POST https://api.github.com/repos/billorbit/billorbit-infra-service/actions/workflows/apply.yml/dispatches \
           -H "Accept: application/vnd.github.v3+json" \
           -H "Content-Type: application/json" \
           -H "Authorization: Bearer ${{ secrets.GH_ACCESS_TOKEN }}" \
